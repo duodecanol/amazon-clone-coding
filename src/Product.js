@@ -1,16 +1,30 @@
 import React from 'react'
 import './Product.css'
 
-function Product() {
+function Product({ id, title, image, price, rating }) {
   return (
-    <div className="product">
-      {/* name */}
-      {/* price */}
-      {/* rating */}
-      {/* thumbnail */}
-      {/* add to basket */}
+    <div className="product" id={id}>
+      <div className="product__info">
+        <p className="product__title">{title}</p>
+        <p className="product__price">
+          <small>$</small>
+          <strong>{price}</strong>
+        </p>
+        <div className="product__rating">
+          {Array(rating).fill().map((_, i) => (
+            <p>⭐</p>
+          ))}
+          
+        </div>
+      </div>
+
+      <img 
+        src={image}
+        alt=""
+      />
+      <button>Add to Basket</button>
     </div>
   )
 }
 
-export default Product
+export default Product;
