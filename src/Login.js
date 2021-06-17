@@ -1,17 +1,35 @@
 import React, { useState } from 'react';
 import './Login.css';
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+import { auth, db } from "./firebase";
 
 function Login() {
+  const history = useHistory();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const signIn = e => {
     e.preventDefault();
-    // some fancy firebase login shiiiiiiiittttttttttt
+    auth
+      .signInWithEmailAndPassword(email, password)
+      .then(auth => {
+        console.log("LOGIN SUCCESSFUL")
+        history.push('/')
+      })
+      .catch(error => alert(error.message))
   };
   const register = e => {
     e.preventDefault();
-    // do some fancy firebase register shiittttttttttttttt.
+
+    auth
+      .createUserWithEmailAndPassword(email, password)
+      .then(auth => {
+        // it successfully created a new user with email and pw
+        console.log(auth);
+        if (auth) { // 새 유저 생성 성공후에 홈페이지 redirect
+          history.push('/')
+        }
+      })
+      .catch(error => alert(error.message));
   };
 
   return (

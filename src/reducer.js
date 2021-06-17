@@ -1,5 +1,6 @@
 export const initialState = {
   basket: [],
+  user: null
 };
 
 const reducer = (state, action) => {
@@ -24,14 +25,19 @@ const reducer = (state, action) => {
         console.warn(
           `Can't remove product (id: ${action.id}) as it's not in basket!!`
         )
-      }
-
+      };
       return {
         ...state,
         basket: newBasket
         // ...state,
         // basket: state.basket.filter(item => item.id !== action.id) // id 일치하는 품목 전부삭제
-      }
+      };
+
+    case 'SET_USER':
+      return {
+        ...state,
+        user: action.user
+      };
 
     default:
       return state;
