@@ -4,9 +4,15 @@ import Header from './Header';
 import Home from './Home';
 import Checkout from './Checkout';
 import Login from './Login';
+import Payment from './Payment'
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { auth } from './firebase';
 import { useStateValue } from './StateProvider';
+import { loadStripe } from '@stripe/stripe-js';
+import { Elements } from "@stripe/react-stripe-js";
+
+const promise = loadStripe('pk_test_51J3YpqIcYg6RaQNtn9wjGkCEtkj3Eq3TPgzQvOksKUfYtOci0Q8ZtEUA6Q0B5WKmkFelc4O58HskvJ32RKBDuRTN00wVjyL3ob');
+// don't need to hide this public Stripe API key
 
 function App() {
 
@@ -45,6 +51,12 @@ function App() {
           <Route path="/checkout">
             <Header />
             <Checkout />
+          </Route>
+          <Route path="/payment">
+            <Header />
+            <Elements stripe={promise}>
+              <Payment />
+            </Elements>
           </Route>
           <Route path="/">
             <Header />

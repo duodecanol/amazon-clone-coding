@@ -21,3 +21,11 @@ export const StateProvider = ({ reducer, initialState, children }) => (
 
 - npm i firebase
 - sudo npm i -g firebase-tools
+
+## customization
+
+https://github.com/joshwcomeau/react-flip-move
+
+## axios
+
+why axios is prefer to the js post/get 
