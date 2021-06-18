@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 require("dotenv").config();
 const functions = require("firebase-functions");
 const express = require("express");
@@ -31,8 +33,8 @@ app.post('/payments/create', async (request, response) => {
   // OK - created
   response.status(201).send({
     clientSecret: paymentIntent.client_secret,
-  })
-})
+  });
+});
 
 // Listen commands
 exports.api = functions.https.onRequest(app)
