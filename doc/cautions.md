@@ -38,4 +38,4 @@ https://github.com/joshwcomeau/react-flip-move
 
 ## axios
 
-why axios is prefer to the js post/get
+?? why axios is prefer to the js post/get??
